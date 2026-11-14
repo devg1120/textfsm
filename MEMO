@@ -1,0 +1,3 @@
+pip install pytest
+pytest tests/textfsm_test.py
+pytest tests/
