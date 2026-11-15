@@ -13,7 +13,7 @@ def parseTemplate(Title, InputData,Template):
     result = fsm.ParseText(InputData)
     tl = 40
     print("")
-    print("## ", end="")
+    print("#### ", end="")
     print("="*(tl+3), Title)
     print("```")
     print("# input #")
@@ -29,7 +29,7 @@ def parseTemplate(Title, InputData,Template):
 
 
 ##########################################
-print("[LINK] (ttps://yoloz.hatenablog.com/entry/2022/02/06/034008)")
+print("[LINK](https://yoloz.hatenablog.com/entry/2022/02/06/034008)")
 ##########################################
 
 InputData = '''
