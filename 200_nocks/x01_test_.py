@@ -13,8 +13,8 @@ def parseTemplate(Title, InputData,Template):
     result = fsm.ParseText(InputData)
     tl = 40
     print("")
-    print("#### ", end="")
-    print("="*(tl+3), Title)
+    print("##### ", end="")
+    print("="*(tl), Title)
     print("```")
     print("# input #")
     print(InputData.strip())
