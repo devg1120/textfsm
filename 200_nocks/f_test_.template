@@ -1,0 +1,8 @@
+Value Date (\d+_\d+_\d+)
+Value List Item (\D+)
+Value List Qty (\d+)
+
+Start
+  ^\d -> Continue.Record
+  ^${Date}\s*${Item}\s*${Qty} 
+  ^\s*${Item}\s*${Qty} 

@@ -1,0 +1,8 @@
+Value Filldown DEVICE (\S+)
+Value Required INTERFACE (\S+)
+Value IP_ADDRESS (\d+\.\d+\.\d+\.\d+)
+
+Start
+  ^Device:\s+${DEVICE}
+  ^\s+${INTERFACE}\s+${IP_ADDRESS} -> Record
+

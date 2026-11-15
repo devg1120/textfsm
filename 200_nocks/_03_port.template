@@ -1,0 +1,16 @@
+Value Key VLAN_ID (\d+)
+Value NAME (\w+)
+Value List PORTS ([^,\s]+)
+
+Start
+  ^\d+ -> Continue.Record
+  ^${VLAN_ID}\s+${NAME}\s+${PORTS} -> Continue
+  ^${VLAN_ID}\s+${NAME}\s+[^,\s]+,\s*${PORTS} -> Ports
+
+Ports
+  ^\s+${PORTS} -> Continue
+  ^\s+[^,\s]+,\s*${PORTS}
+  ^\d+ -> Continue.Record
+  ^${VLAN_ID}\s+${NAME}\s+${PORTS} -> Continue
+  ^${VLAN_ID}\s+${NAME}\s+[^,\s]+,\s*${PORTS} -> Ports
+

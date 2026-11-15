@@ -1,0 +1,9 @@
+Value Key VLAN_ID (\d+)
+Value NAME (\w+)
+Value List PORTS (.+)
+
+Start
+  ^\d+ -> Continue.Record
+  ^${VLAN_ID}\s+${NAME}\s+${PORTS}
+  ^\s+${PORTS}
+

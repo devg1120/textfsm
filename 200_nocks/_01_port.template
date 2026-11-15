@@ -1,0 +1,7 @@
+Value INTERFACE (\S+)
+Value IP_ADDRESS (\d+\.\d+\.\d+\.\d+)
+Value STATUS (\w+)
+
+Start
+  ^${INTERFACE}\s+${IP_ADDRESS}\s+${STATUS} -> Record
+

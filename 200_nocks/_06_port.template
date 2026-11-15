@@ -1,0 +1,10 @@
+Value INTERFACE (\S+)
+Value IP_ADDRESS (\d+\.\d+\.\d+\.\d+)
+Value Fillup GROUP_NAME (\S+)
+
+Start
+  ^\s+${INTERFACE}\s+${IP_ADDRESS} -> Record
+  ^Group:\s+${GROUP_NAME}
+
+EOF
+

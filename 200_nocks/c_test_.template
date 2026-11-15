@@ -1,0 +1,9 @@
+Value Filldown Date (\d+_\d+_\d+)
+Value Item (\D+)
+Value Qty (\d+)
+
+Start
+  ^${Date}\s*${Item}\s*${Qty} -> Record
+  ^\s*${Item}\s*${Qty} -> Record
+
+EOF
