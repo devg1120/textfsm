@@ -1,0 +1,69 @@
+from pathlib import Path
+import sys
+parent_dir = Path(__file__).resolve().parent.parent
+sys.path.append(str(parent_dir))
+
+##########################################
+"""
+import io
+import textfsm
+
+InputData = '''
+2022_01_01 banana 100
+           orange 200
+           carrot 300
+2022_12_31 banana 200
+'''
+
+# 1. r''' でraw文字列にする（\d などの警告防止）
+# 2. Filldown をつけると、次のDateが現れるまで上の行のDateを保持する
+Template = r'''
+Value Filldown Date (\d+_\d+_\d+)
+Value Item (\S+)
+Value Qty (\d+)
+
+Start
+  ^${Date}\s+${Item}\s+${Qty} -> Record
+  ^\s+${Item}\s+${Qty} -> Record
+'''
+
+# 3. io.StringIO() でラップして渡す
+fsm = textfsm.TextFSM(io.StringIO(Template))
+result = fsm.ParseText(InputData)
+
+print(fsm.header)
+print(*result, sep='\n')
+
+"""
+import io
+import textfsm
+
+InputData = '''
+2022_01_01 banana 100
+           orange 200
+           carrot 300
+2022_12_31 banana 200
+'''
+
+Template = r'''
+Value Date (\d+_\d+_\d+)
+Value Item (\D+)
+Value Qty (\d+)
+
+Start
+  ^${Date}\s*${Item}\s*${Qty} -> Record
+  ^\s*${Item}\s*${Qty} -> Record
+'''
+
+
+fsm = textfsm.TextFSM(io.StringIO(Template.strip()))
+result = fsm.ParseText(InputData)
+
+print(InputData)
+print("---------------------")
+print(fsm)
+print("---------------------")
+print(fsm.header)
+print(*result, sep='\n')
+
+

@@ -1,0 +1,41 @@
+from pathlib import Path
+import sys
+parent_dir = Path(__file__).resolve().parent.parent
+sys.path.append(str(parent_dir))
+
+##########################################
+import io
+import textfsm
+def makeTemplate(Template):
+    return io.StringIO(Template.strip())
+
+InputData = '''
+2022_01_01 banana 100
+           orange 200
+           carrot 300
+2022_12_31 banana 200
+'''
+
+Template = r'''
+Value Date (\d+_\d+_\d+)
+Value Item (\D+)
+Value Qty (\d+)
+
+Start
+  ^${Date}\s*${Item}\s*${Qty} -> Record
+  ^\s*${Item}\s*${Qty} -> Record
+'''
+
+Template_io = makeTemplate(Template)
+
+fsm = textfsm.TextFSM(Template_io)
+result = fsm.ParseText(InputData)
+
+print(InputData)
+print("---------------------")
+print(fsm)
+print("---------------------")
+print(fsm.header)
+print(*result, sep='\n')
+
+
