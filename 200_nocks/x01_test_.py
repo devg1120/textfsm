@@ -15,7 +15,7 @@ def parseTemplate(Title, InputData,Template):
     print("")
     print("## ", end="")
     print("="*(tl+3), Title)
-    print("\"\"\"")
+    print("```")
     print("# input #")
     print(InputData.strip())
     print("-"*tl)
@@ -25,7 +25,7 @@ def parseTemplate(Title, InputData,Template):
     print("# result #")
     print(fsm.header)
     print(*result, sep='\n')
-    print("\"\"\"")
+    print("```")
 
 
 ##########################################
